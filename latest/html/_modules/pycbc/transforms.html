@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.transforms &mdash; PyCBC 1.14.dev3 documentation</title>
+  <title>pycbc.transforms &mdash; PyCBC c01d07 documentation</title>
   
 
   
@@ -60,6 +60,10 @@
 
           
             
+            
+              <div class="version">
+                1.14.2
+              </div>
             
           
 
@@ -1397,6 +1401,121 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div></div>
 
 
+<div class="viewcode-block" id="Log"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Log">[docs]</a><span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Applies a log transform from an `inputvar` parameter to an `outputvar`</span>
+<span class="sd">    parameter. This is the inverse of the exponent transform.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    inputvar : str</span>
+<span class="sd">        The name of the parameter to transform.</span>
+<span class="sd">    outputvar : str</span>
+<span class="sd">        The name of the transformed parameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;log&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputvar</span><span class="p">,</span> <span class="n">outputvar</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputvar</span> <span class="o">=</span> <span class="n">inputvar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputvar</span> <span class="o">=</span> <span class="n">outputvar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">inputvar</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">outputvar</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Log</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">inputvar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the input parameter.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputvar</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">outputvar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the output parameter.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outputvar</span>
+
+<div class="viewcode-block" id="Log.transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Log.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes :math:`\log(x)`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        maps : dict or FieldArray</span>
+<span class="sd">            A dictionary or FieldArray which provides a map between the</span>
+<span class="sd">            parameter name of the variable to transform and its value(s).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : dict or FieldArray</span>
+<span class="sd">            A map between the transformed variable name and value(s), along</span>
+<span class="sd">            with the original variable name and value(s).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputvar</span><span class="p">]</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputvar</span> <span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Log.inverse_transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Log.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes :math:`y = e^{x}`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        maps : dict or FieldArray</span>
+<span class="sd">            A dictionary or FieldArray which provides a map between the</span>
+<span class="sd">            parameter name of the variable to transform and its value(s).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : dict or FieldArray</span>
+<span class="sd">            A map between the transformed variable name and value(s), along</span>
+<span class="sd">            with the original variable name and value(s).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputvar</span><span class="p">]</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputvar</span> <span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">y</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Log.jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Log.jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the Jacobian of :math:`y = \log(x)`.</span>
+
+<span class="sd">        This is:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{1}{x}.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        maps : dict or FieldArray</span>
+<span class="sd">            A dictionary or FieldArray which provides a map between the</span>
+<span class="sd">            parameter name of the variable to transform and its value(s).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The value of the jacobian at the given point(s).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputvar</span><span class="p">]</span>
+        <span class="k">return</span> <span class="mf">1.</span><span class="o">/</span><span class="n">x</span></div>
+
+<div class="viewcode-block" id="Log.inverse_jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Log.inverse_jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the Jacobian of :math:`y = e^{x}`.</span>
+
+<span class="sd">        This is:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \frac{\mathrm{d}y}{\mathrm{d}x} = e^{x}.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        maps : dict or FieldArray</span>
+<span class="sd">            A dictionary or FieldArray which provides a map between the</span>
+<span class="sd">            parameter name of the variable to transform and its value(s).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The value of the jacobian at the given point(s).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputvar</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div></div>
+
+
 <div class="viewcode-block" id="Logit"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logit">[docs]</a><span class="k">class</span> <span class="nc">Logit</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Applies a logit transform from an `inputvar` parameter to an `outputvar`</span>
 <span class="sd">    parameter. This is the inverse of the logistic transform.</span>
@@ -1818,6 +1937,29 @@
     <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span></div>
 
 
+<div class="viewcode-block" id="Exponent"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Exponent">[docs]</a><span class="k">class</span> <span class="nc">Exponent</span><span class="p">(</span><span class="n">Log</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Applies an exponent transform to an `inputvar` parameter.</span>
+<span class="sd">    </span>
+<span class="sd">    This is the inverse of the log transform.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    inputvar : str</span>
+<span class="sd">        The name of the parameter to transform.</span>
+<span class="sd">    outputvar : str</span>
+<span class="sd">        The name of the transformed parameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;exponent&#39;</span>
+    <span class="n">inverse</span> <span class="o">=</span> <span class="n">Log</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_transform</span>
+    <span class="n">inverse_transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">transform</span>
+    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span>
+    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputvar</span><span class="p">,</span> <span class="n">outputvar</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Exponent</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">outputvar</span><span class="p">,</span> <span class="n">inputvar</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="Logistic"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logistic">[docs]</a><span class="k">class</span> <span class="nc">Logistic</span><span class="p">(</span><span class="n">Logit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Applies a logistic transform from an `input` parameter to an `output`</span>
 <span class="sd">    parameter. This is the inverse of the logit transform.</span>
@@ -1930,6 +2072,7 @@
 <span class="n">AlignedMassSpinToCartesianSpin</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">CartesianSpinToAlignedMassSpin</span>
 <span class="n">PrecessionMassSpinToCartesianSpin</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">CartesianSpinToPrecessionMassSpin</span>
 <span class="n">ChiPToCartesianSpin</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">CartesianSpinToChiP</span>
+<span class="n">Log</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">Exponent</span>
 <span class="n">Logit</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">Logistic</span>
 
 
@@ -1960,6 +2103,8 @@
     <span class="n">CartesianSpinToPrecessionMassSpin</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">CartesianSpinToPrecessionMassSpin</span><span class="p">,</span>
     <span class="n">ChiPToCartesianSpin</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">ChiPToCartesianSpin</span><span class="p">,</span>
     <span class="n">CartesianSpinToChiP</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">CartesianSpinToChiP</span><span class="p">,</span>
+    <span class="n">Log</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">Log</span><span class="p">,</span>
+    <span class="n">Exponent</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">Exponent</span><span class="p">,</span>
     <span class="n">Logit</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">Logit</span><span class="p">,</span>
     <span class="n">Logistic</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">Logistic</span><span class="p">,</span>
     <span class="n">LambdaFromTOVFile</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">LambdaFromTOVFile</span><span class="p">,</span>
@@ -2191,7 +2336,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Oct 25, 2019.
+        Last updated on Oct 30, 2019.
       </span>
 
     </p>

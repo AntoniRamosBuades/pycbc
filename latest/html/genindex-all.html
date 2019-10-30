@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PyCBC 1.14.dev3 documentation</title>
+  <title>Index &mdash; PyCBC c01d07 documentation</title>
   
 
   
@@ -61,6 +61,10 @@
 
           
             
+            
+              <div class="version">
+                1.14.2
+              </div>
             
           
 
@@ -1158,14 +1162,14 @@
 </li>
       <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile.copy_samples">copy_samples() (pycbc.inference.io.base_hdf.BaseInferenceFile method)</a>
 </li>
-      <li><a href="pycbc.filter.html#pycbc.filter.matchedfilter_cpu.CPUCorrelator.correlate">correlate (pycbc.filter.matchedfilter_cpu.CPUCorrelator attribute)</a>
-</li>
       <li><a href="pycbc.filter.html#pycbc.filter.matchedfilter.correlate">correlate() (in module pycbc.filter.matchedfilter)</a>
 
       <ul>
         <li><a href="pycbc.filter.html#pycbc.filter.matchedfilter_cpu.correlate">(in module pycbc.filter.matchedfilter_cpu)</a>
 </li>
         <li><a href="pycbc.filter.html#pycbc.filter.matchedfilter_numpy.correlate">(in module pycbc.filter.matchedfilter_numpy)</a>
+</li>
+        <li><a href="pycbc.filter.html#pycbc.filter.matchedfilter_cpu.CPUCorrelator.correlate">(pycbc.filter.matchedfilter_cpu.CPUCorrelator method)</a>
 </li>
       </ul></li>
       <li><a href="pycbc.filter.html#pycbc.filter.matchedfilter_cpu.correlate_numpy">correlate_numpy() (in module pycbc.filter.matchedfilter_cpu)</a>
@@ -1795,6 +1799,8 @@
       <li><a href="pycbc.events.html#pycbc.events.stat.ExpFitStatistic">ExpFitStatistic (class in pycbc.events.stat)</a>
 </li>
       <li><a href="pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.expire_vector">expire_vector() (pycbc.events.coinc.MultiRingBuffer method)</a>
+</li>
+      <li><a href="pycbc.html#pycbc.transforms.Exponent">Exponent (class in pycbc.transforms)</a>
 </li>
       <li><a href="pycbc.fft.html#pycbc.fft.fftw.export_double_wisdom_to_filename">export_double_wisdom_to_filename() (in module pycbc.fft.fftw)</a>
 </li>
@@ -2804,8 +2810,6 @@
         <li><a href="pycbc.inject.html#pycbc.inject.inject.RingdownHDFInjectionSet.injtype">(pycbc.inject.inject.RingdownHDFInjectionSet attribute)</a>
 </li>
       </ul></li>
-      <li><a href="pycbc.html#pycbc.weave.inline">inline() (in module pycbc.weave)</a>
-</li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.compress.inline_linear_interp">inline_linear_interp() (in module pycbc.waveform.compress)</a>
 
       <ul>
@@ -2820,8 +2824,12 @@
       </ul></li>
       <li><a href="pycbc.types.html#pycbc.types.array_cpu.inner_real">inner_real (in module pycbc.types.array_cpu)</a>
 </li>
-      <li><a href="pycbc.html#pycbc.transforms.Logit.inputvar">inputvar (pycbc.transforms.Logit attribute)</a>
+      <li><a href="pycbc.html#pycbc.transforms.Log.inputvar">inputvar (pycbc.transforms.Log attribute)</a>
+
+      <ul>
+        <li><a href="pycbc.html#pycbc.transforms.Logit.inputvar">(pycbc.transforms.Logit attribute)</a>
 </li>
+      </ul></li>
       <li><a href="pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.insert_args">insert_args() (pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator static method)</a>
 
       <ul>
@@ -2870,14 +2878,14 @@
 </li>
       <li><a href="pycbc.strain.html#pycbc.strain.strain.insert_strain_option_group">insert_strain_option_group() (in module pycbc.strain.strain)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.strain.html#pycbc.strain.strain.insert_strain_option_group_multi_ifo">insert_strain_option_group_multi_ifo() (in module pycbc.strain.strain)</a>
 </li>
       <li><a href="pycbc.html#pycbc.weave.insert_weave_option_group">insert_weave_option_group() (in module pycbc.weave)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.jobsetup.InspinjfindExecutable">InspinjfindExecutable (class in pycbc.workflow.jobsetup)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.workflow.html#pycbc.workflow.jobsetup.int_gps_time_to_str">int_gps_time_to_str() (in module pycbc.workflow.jobsetup)</a>
 </li>
       <li><a href="pycbc.html#pycbc.rate.integral_element">integral_element() (in module pycbc.rate)</a>
@@ -2927,6 +2935,10 @@
 </li>
         <li><a href="pycbc.html#pycbc.transforms.DistanceToRedshift.inverse">(pycbc.transforms.DistanceToRedshift attribute)</a>
 </li>
+        <li><a href="pycbc.html#pycbc.transforms.Exponent.inverse">(pycbc.transforms.Exponent attribute)</a>
+</li>
+        <li><a href="pycbc.html#pycbc.transforms.Log.inverse">(pycbc.transforms.Log attribute)</a>
+</li>
         <li><a href="pycbc.html#pycbc.transforms.Logistic.inverse">(pycbc.transforms.Logistic attribute)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.Logit.inverse">(pycbc.transforms.Logit attribute)</a>
@@ -2959,6 +2971,10 @@
 </li>
         <li><a href="pycbc.html#pycbc.transforms.DistanceToChirpDistance.inverse_jacobian">(pycbc.transforms.DistanceToChirpDistance method)</a>
 </li>
+        <li><a href="pycbc.html#pycbc.transforms.Exponent.inverse_jacobian">(pycbc.transforms.Exponent method)</a>
+</li>
+        <li><a href="pycbc.html#pycbc.transforms.Log.inverse_jacobian">(pycbc.transforms.Log method)</a>
+</li>
         <li><a href="pycbc.html#pycbc.transforms.Logistic.inverse_jacobian">(pycbc.transforms.Logistic method)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.Logit.inverse_jacobian">(pycbc.transforms.Logit method)</a>
@@ -2990,6 +3006,10 @@
         <li><a href="pycbc.html#pycbc.transforms.ChirpDistanceToDistance.inverse_transform">(pycbc.transforms.ChirpDistanceToDistance method)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.DistanceToChirpDistance.inverse_transform">(pycbc.transforms.DistanceToChirpDistance method)</a>
+</li>
+        <li><a href="pycbc.html#pycbc.transforms.Exponent.inverse_transform">(pycbc.transforms.Exponent method)</a>
+</li>
+        <li><a href="pycbc.html#pycbc.transforms.Log.inverse_transform">(pycbc.transforms.Log method)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.Logistic.inverse_transform">(pycbc.transforms.Logistic method)</a>
 </li>
@@ -3066,6 +3086,10 @@
         <li><a href="pycbc.html#pycbc.transforms.CustomTransform.jacobian">(pycbc.transforms.CustomTransform method)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.DistanceToChirpDistance.jacobian">(pycbc.transforms.DistanceToChirpDistance method)</a>
+</li>
+        <li><a href="pycbc.html#pycbc.transforms.Exponent.jacobian">(pycbc.transforms.Exponent method)</a>
+</li>
+        <li><a href="pycbc.html#pycbc.transforms.Log.jacobian">(pycbc.transforms.Log method)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.Logistic.jacobian">(pycbc.transforms.Logistic method)</a>
 </li>
@@ -3268,13 +3292,15 @@
 </li>
       <li><a href="pycbc.results.html#pycbc.results.pygrb_plotting_utils.load_triggers">load_triggers() (in module pycbc.results.pygrb_plotting_utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.results.html#pycbc.results.pygrb_plotting_utils.load_xml_file">load_xml_file() (in module pycbc.results.pygrb_plotting_utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.inference.io.html#pycbc.inference.io.loadfile">loadfile() (in module pycbc.inference.io)</a>
 </li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.generator.FDomainDetFrameGenerator.location_args">location_args (pycbc.waveform.generator.FDomainDetFrameGenerator attribute)</a>, <a href="pycbc.waveform.html#pycbc.waveform.generator.FDomainDetFrameGenerator.location_args">[1]</a>
+</li>
+      <li><a href="pycbc.html#pycbc.transforms.Log">Log (class in pycbc.transforms)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.datafind.log_datafind_command">log_datafind_command() (in module pycbc.workflow.datafind)</a>
 </li>
@@ -3927,9 +3953,13 @@
 </li>
         <li><a href="pycbc.html#pycbc.transforms.DistanceToRedshift.name">(pycbc.transforms.DistanceToRedshift attribute)</a>
 </li>
+        <li><a href="pycbc.html#pycbc.transforms.Exponent.name">(pycbc.transforms.Exponent attribute)</a>
+</li>
         <li><a href="pycbc.html#pycbc.transforms.LambdaFromMultipleTOVFiles.name">(pycbc.transforms.LambdaFromMultipleTOVFiles attribute)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.LambdaFromTOVFile.name">(pycbc.transforms.LambdaFromTOVFile attribute)</a>
+</li>
+        <li><a href="pycbc.html#pycbc.transforms.Log.name">(pycbc.transforms.Log attribute)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.Logistic.name">(pycbc.transforms.Logistic attribute)</a>
 </li>
@@ -4132,16 +4162,20 @@
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.core.Node.output_files">output_files (pycbc.workflow.core.Node attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.workflow.html#pycbc.workflow.core.Workflow.output_map">output_map (pycbc.workflow.core.Workflow attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.workflow.html#pycbc.workflow.pegasus_workflow.File.output_map_str">output_map_str() (pycbc.workflow.pegasus_workflow.File method)</a>
 </li>
       <li><a href="pycbc.tmpltbank.html#pycbc.tmpltbank.bank_output_utils.output_sngl_inspiral_table">output_sngl_inspiral_table() (in module pycbc.tmpltbank.bank_output_utils)</a>
 </li>
-      <li><a href="pycbc.html#pycbc.transforms.Logit.outputvar">outputvar (pycbc.transforms.Logit attribute)</a>
+      <li><a href="pycbc.html#pycbc.transforms.Log.outputvar">outputvar (pycbc.transforms.Log attribute)</a>
+
+      <ul>
+        <li><a href="pycbc.html#pycbc.transforms.Logit.outputvar">(pycbc.transforms.Logit attribute)</a>
 </li>
+      </ul></li>
       <li><a href="pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.outspiral_loop">outspiral_loop() (in module pycbc.tmpltbank.coord_utils)</a>
 </li>
       <li><a href="pycbc.html#pycbc.detector.overhead_antenna_pattern">overhead_antenna_pattern() (in module pycbc.detector)</a>
@@ -5983,9 +6017,13 @@
 </li>
         <li><a href="pycbc.html#pycbc.transforms.DistanceToRedshift.transform">(pycbc.transforms.DistanceToRedshift method)</a>
 </li>
+        <li><a href="pycbc.html#pycbc.transforms.Exponent.transform">(pycbc.transforms.Exponent method)</a>
+</li>
         <li><a href="pycbc.html#pycbc.transforms.LambdaFromMultipleTOVFiles.transform">(pycbc.transforms.LambdaFromMultipleTOVFiles method)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.LambdaFromTOVFile.transform">(pycbc.transforms.LambdaFromTOVFile method)</a>
+</li>
+        <li><a href="pycbc.html#pycbc.transforms.Log.transform">(pycbc.transforms.Log method)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.Logistic.transform">(pycbc.transforms.Logistic method)</a>
 </li>
@@ -6417,7 +6455,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Oct 25, 2019.
+        Last updated on Oct 30, 2019.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC 1.14.dev3 documentation</title>
+  <title>pycbc package &mdash; PyCBC c01d07 documentation</title>
   
 
   
@@ -62,6 +62,10 @@
 
           
             
+            
+              <div class="version">
+                1.14.2
+              </div>
             
           
 
@@ -3671,7 +3675,7 @@ schemes.</p>
 
 <dl class="function">
 <dt id="pycbc.scheme.cpuonly">
-<code class="descclassname">pycbc.scheme.</code><code class="descname">cpuonly</code><span class="sig-paren">(</span><em>fn</em>, <em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/scheme.html#cpuonly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.scheme.cpuonly" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.scheme.</code><code class="descname">cpuonly</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/scheme.html#cpuonly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.scheme.cpuonly" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -4719,6 +4723,121 @@ of transformed values.</td>
 </dd></dl>
 
 <dl class="class">
+<dt id="pycbc.transforms.Exponent">
+<em class="property">class </em><code class="descclassname">pycbc.transforms.</code><code class="descname">Exponent</code><span class="sig-paren">(</span><em>inputvar</em>, <em>outputvar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Exponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Exponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.transforms.Log" title="pycbc.transforms.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.transforms.Log</span></code></a></p>
+<p>Applies an exponent transform to an <cite>inputvar</cite> parameter.</p>
+<p>This is the inverse of the log transform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>inputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The name of the parameter to transform.</li>
+<li><strong>outputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The name of the transformed parameter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.transforms.Exponent.inverse">
+<code class="descname">inverse</code><a class="headerlink" href="#pycbc.transforms.Exponent.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pycbc.transforms.Log" title="pycbc.transforms.Log"><code class="xref py py-class docutils literal notranslate"><span class="pre">Log</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Exponent.inverse_jacobian">
+<code class="descname">inverse_jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Exponent.inverse_jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Jacobian of <span class="math notranslate nohighlight">\(y = \log(x)\)</span>.</p>
+<p>This is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{1}{x}.\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+parameter name of the variable to transform and its value(s).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the jacobian at the given point(s).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Exponent.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Exponent.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes <span class="math notranslate nohighlight">\(\log(x)\)</span>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+parameter name of the variable to transform and its value(s).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A map between the transformed variable name and value(s), along
+with the original variable name and value(s).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Exponent.jacobian">
+<code class="descname">jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Exponent.jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Jacobian of <span class="math notranslate nohighlight">\(y = e^{x}\)</span>.</p>
+<p>This is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\mathrm{d}y}{\mathrm{d}x} = e^{x}.\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+parameter name of the variable to transform and its value(s).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the jacobian at the given point(s).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.transforms.Exponent.name">
+<code class="descname">name</code><em class="property"> = 'exponent'</em><a class="headerlink" href="#pycbc.transforms.Exponent.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Exponent.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Exponent.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes <span class="math notranslate nohighlight">\(y = e^{x}\)</span>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+parameter name of the variable to transform and its value(s).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A map between the transformed variable name and value(s), along
+with the original variable name and value(s).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="pycbc.transforms.LambdaFromMultipleTOVFiles">
 <em class="property">class </em><code class="descclassname">pycbc.transforms.</code><code class="descname">LambdaFromMultipleTOVFiles</code><span class="sig-paren">(</span><em>mass_param</em>, <em>lambda_param</em>, <em>map_file</em>, <em>distance=None</em>, <em>file_columns=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#LambdaFromMultipleTOVFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.LambdaFromMultipleTOVFiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.transforms.BaseTransform" title="pycbc.transforms.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.transforms.BaseTransform</span></code></a></p>
@@ -4915,6 +5034,133 @@ an EOS.</p>
 <dt id="pycbc.transforms.LambdaFromTOVFile.transform">
 <code class="descname">transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#LambdaFromTOVFile.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.LambdaFromTOVFile.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the transformation of mass to Lambda.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+parameter name of the variable to transform and its value(s).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A map between the transformed variable name and value(s), along
+with the original variable name and value(s).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.transforms.Log">
+<em class="property">class </em><code class="descclassname">pycbc.transforms.</code><code class="descname">Log</code><span class="sig-paren">(</span><em>inputvar</em>, <em>outputvar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.transforms.BaseTransform" title="pycbc.transforms.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.transforms.BaseTransform</span></code></a></p>
+<p>Applies a log transform from an <cite>inputvar</cite> parameter to an <cite>outputvar</cite>
+parameter. This is the inverse of the exponent transform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>inputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The name of the parameter to transform.</li>
+<li><strong>outputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The name of the transformed parameter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.transforms.Log.inputvar">
+<code class="descname">inputvar</code><a class="headerlink" href="#pycbc.transforms.Log.inputvar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the input parameter.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.transforms.Log.inverse">
+<code class="descname">inverse</code><a class="headerlink" href="#pycbc.transforms.Log.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pycbc.transforms.Exponent" title="pycbc.transforms.Exponent"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exponent</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Log.inverse_jacobian">
+<code class="descname">inverse_jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Log.inverse_jacobian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Log.inverse_jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Jacobian of <span class="math notranslate nohighlight">\(y = e^{x}\)</span>.</p>
+<p>This is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\mathrm{d}y}{\mathrm{d}x} = e^{x}.\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+parameter name of the variable to transform and its value(s).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the jacobian at the given point(s).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Log.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Log.inverse_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Log.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes <span class="math notranslate nohighlight">\(y = e^{x}\)</span>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+parameter name of the variable to transform and its value(s).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A map between the transformed variable name and value(s), along
+with the original variable name and value(s).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Log.jacobian">
+<code class="descname">jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Log.jacobian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Log.jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Jacobian of <span class="math notranslate nohighlight">\(y = \log(x)\)</span>.</p>
+<p>This is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{1}{x}.\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+parameter name of the variable to transform and its value(s).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the jacobian at the given point(s).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.transforms.Log.name">
+<code class="descname">name</code><em class="property"> = 'log'</em><a class="headerlink" href="#pycbc.transforms.Log.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.transforms.Log.outputvar">
+<code class="descname">outputvar</code><a class="headerlink" href="#pycbc.transforms.Log.outputvar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the output parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Log.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Log.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Log.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes <span class="math notranslate nohighlight">\(\log(x)\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -6056,11 +6302,6 @@ nests.</p>
 <span id="pycbc-weave-module"></span><h2>pycbc.weave module<a class="headerlink" href="#module-pycbc.weave" title="Permalink to this headline">¶</a></h2>
 <p>This module provides methods for controlling weave</p>
 <dl class="function">
-<dt id="pycbc.weave.inline">
-<code class="descclassname">pycbc.weave.</code><code class="descname">inline</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/weave.html#inline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.weave.inline" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
 <dt id="pycbc.weave.insert_weave_option_group">
 <code class="descclassname">pycbc.weave.</code><code class="descname">insert_weave_option_group</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/weave.html#insert_weave_option_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.weave.insert_weave_option_group" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the options used to specify weave options.</p>
@@ -6149,7 +6390,7 @@ already exist. Will do nothing if path already exists.</p>
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Oct 25, 2019.
+        Last updated on Oct 30, 2019.
       </span>
 
     </p>
