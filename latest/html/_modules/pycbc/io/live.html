@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.live &mdash; PyCBC 1.14.dev3 documentation</title>
+  <title>pycbc.io.live &mdash; PyCBC c1efb5 documentation</title>
   
 
   
@@ -60,6 +60,10 @@
 
           
             
+            
+              <div class="version">
+                1.14.2
+              </div>
             
           
 
@@ -564,7 +568,7 @@
 
             <span class="n">extra_strings</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">extra_strings</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">extra_strings</span>
             <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">extra_strings</span><span class="p">:</span>
-                <span class="n">gracedb</span><span class="o">.</span><span class="n">writeLog</span><span class="p">(</span><span class="n">gid</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+                <span class="n">gracedb</span><span class="o">.</span><span class="n">writeLog</span><span class="p">(</span><span class="n">gid</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">tag_name</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;analyst_comments&#39;</span><span class="p">])</span>
 
             <span class="c1"># upload SNR series in HDF format and plots</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">snr_series</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -601,7 +605,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Oct 30, 2019.
+        Last updated on Nov 01, 2019.
       </span>
 
     </p>
