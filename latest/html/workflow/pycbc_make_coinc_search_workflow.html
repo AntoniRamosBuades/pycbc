@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc_make_coinc_search_workflow: A workflow to search for gravitational waves &mdash; PyCBC b768c0 documentation</title>
+  <title>pycbc_make_coinc_search_workflow: A workflow to search for gravitational waves &mdash; PyCBC 4a3909 documentation</title>
   
 
   
@@ -1115,9 +1115,7 @@ examples:</p>
 <h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <p>There are a number of requirements on the machine on which the workflow will be started:</p>
 <ul>
-<li><p class="first">Pegasus version 4.7.1 or later.</p>
-</li>
-<li><p class="first">The bundled executables available on the submit machine</p>
+<li><p class="first">Pegasus version 4.7.1 or later (at least 4.9.2 recommended).</p>
 </li>
 <li><p class="first">A gridftp server running on the submit machine</p>
 </li>
@@ -1130,57 +1128,51 @@ examples:</p>
 </div>
 <div class="section" id="configuring-the-workflow">
 <h3>Configuring the workflow<a class="headerlink" href="#configuring-the-workflow" title="Permalink to this headline">¶</a></h3>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Standard PyCBC installs build a version of <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> that uses weave
-to compile code at runtime. Many OSG machines do not have all of the
-compiler tools required to support weave compilation. In order to run on
-the OSG, the <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> executable must be built as a PyInstaller
-bundle that contains all of the weave-compiled code inside the bundle.
-This bundle must be built on a lowest-common denominator platform so that
-the shared libraries that it needs at runtime (e.g. glibc) are available.
-RHEL6 (or a similar derivative) is a suitable platform. The <code class="docutils literal notranslate"><span class="pre">/cvmfs</span></code>
-filesystem contains <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> bundles that are built on the
-<code class="docutils literal notranslate"><span class="pre">x86_64_rhel_6</span></code> platform and are suitable for use on the OSG. For
-instructions on how to build PyInstaller bundled executables, see the page <a class="reference internal" href="../building_bundled_executables.html#building-bundled-executables"><span class="std std-ref">Building Bundled Executables</span></a>.</p>
-</div>
-<p>In order for <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> to be sent to worker nodes it must be
-available via a remote protocol, either http, gsiftp, or CVMFS. Releases of
-pycbc are installed in CVMFS and the LDG head nodes run a gridftp server that
-can serve your own development copy.  Specify this path when you run
-<code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code>. To run from a released bundle in CVMFS
-give the following argument to the <code class="docutils literal notranslate"><span class="pre">--config-overrides</span></code> option (changing the
-path to point to the release that you want to use):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;executables:inspiral:/cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/x86_64_rhel_6/bundle/v1.6.6/pycbc_inspiral&#39;</span>
-</pre></div>
-</div>
-<p>If you are running your own build of <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code>, you will need to give
-a path to a gsiftp URL and tell Pegasus that the executable is not installed
-on the OSG with the two <code class="docutils literal notranslate"><span class="pre">--config-overrides</span></code> options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;executables:inspiral:gsiftp://server.hostname/path/to/pycbc_inspiral&quot;</span>
-<span class="s2">&quot;pegasus_profile-inspiral:pycbc|installed:False&quot;</span>
-</pre></div>
-</div>
-<p>Make sure this executable is build following the instructions on the page <a class="reference internal" href="../building_bundled_executables.html#building-bundled-executables"><span class="std std-ref">Building Bundled Executables</span></a>.</p>
-<p>Some of the files generated during the workflow will need to be served via gridftp from the LDG
-head node from which you submit, however the gravitational wave frame data files are too large for this.
-They are available from CVMFS and other fall-back locations, however you will need to
-ensure that your datafind server returns these locations (it may not do so on an LDG head node,
-for example, if you use the default datafind server). If you have LIGO.org credentials, you should
-execute:</p>
+<p>These instructions are for the case where you plan to run all <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> jobs
+on the Open Science Grid, but the rest of the workflow will run on the local HTCondor pool
+attached to the submit machine.  For many clusters, including LDG clusters,
+running in this fashion may not be available from every submit machine. First,
+check with local sysadmins or other experts if there is a particular node from which
+you must plan and submit your workflow if you desire to run on the OSG.</p>
+<p>The first step in such running is to ensure that your workflow knows where to find
+all of the data it needs. While some of the files generated during the workflow will need
+to be served via gridftp from your submission head node (as detailed below), the gravitational
+wave frame data files are too large for this. They are available from CVMFS and other
+fall-back locations, but you need to make sure that your datafind server returns these
+locations (it may not do so on an LDG head node, for example, if you use the default datafind
+server). If you have LIGO.org credentials, you should execute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">LIGO_DATAFIND_SERVER</span><span class="o">=</span><span class="s2">&quot;datafind.ligo.org&quot;</span>
 </pre></div>
 </div>
-<p>before you run <code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code>. Otherwise, contact your local system administrator for
-a valid datafind server that points to publicly available frame files.</p>
-<p>Add the following to the list of <code class="docutils literal notranslate"><span class="pre">--config-overrides</span></code> when running <code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code> to tell Pegasus to run the inspiral code on the OSG:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pegasus_profile-inspiral:pycbc|site:osg&quot;</span>
-<span class="s2">&quot;pegasus_profile-inspiral:hints|execution.site:osg&quot;</span>
-<span class="s2">&quot;pegasus_profile-inspiral:pycbc|installed:False&quot;</span>
-<span class="s2">&quot;inspiral:fixed-weave-cache&quot;</span>
+<p>before you run <code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code>. Otherwise, contact your local system
+administrator for a valid datafind server that points to publicly available frame files.</p>
+<p>In order to run <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> on OSG worker nodes, it must be available
+in a Singularity container served from CVMFS. Releases of PyCBC build such containers
+and publish them to CVMFS, but the workflow needs to be told to only run on nodes that
+have Singularity available, and it needs the location of the <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> executable
+inside of the Singularity image. To do this, add the following to the <code class="docutils literal notranslate"><span class="pre">--config-overrides</span></code>
+given to <code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pegasus_profile-inspiral:pycbc|site:osg&quot;</span> \
+<span class="s2">&quot;pegasus_profile-inspiral:hints|execution.site:osg&quot;</span> \
+<span class="s2">&quot;pegasus_profile-inspiral:condor|Requirements:(HAS_SINGULARITY =?= TRUE) &amp;&amp; (IS_GLIDEIN =?= True)&quot;</span> \
+<span class="s2">&quot;executables:inspiral:/bin/pycbc_inspiral&quot;</span> \
 </pre></div>
 </div>
-<p>You also need a <code class="docutils literal notranslate"><span class="pre">--config-overrides</span></code> to <code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code> that sets the staging site for the main workflow to the local site. To do this, add the following argument, replacing <code class="docutils literal notranslate"><span class="pre">${WORKFLOW_NAME}</span></code> with the string that is given as the argument to the option <code class="docutils literal notranslate"><span class="pre">--workflow-name</span></code>:</p>
+<p>These lines tell <code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code> that the inspiral jobs will
+run on the Open Science Grid, and that such jobs need to run at sites where Singularity
+is installed. They also tell them that the path to <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> inside the container
+is <code class="docutils literal notranslate"><span class="pre">/bin/pycbc_inspiral</span></code>. If you are an LVK user, and you will be accessing non-public
+LVK data, then you additionally must specify that you need to run at nodes where this
+authenticated frame data is available.  To do that, change the <code class="docutils literal notranslate"><span class="pre">Requirements</span></code> line above
+to read instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pegasus_profile-inspiral:condor|Requirements:(HAS_SINGULARITY =?= TRUE) &amp;&amp; (HAS_LIGO_FRAMES =?= True) &amp;&amp; (IS_GLIDEIN =?= True)&quot;</span> \
+</pre></div>
+</div>
+<p>Because the data that the inspiral jobs will need in addition to the frame files must
+come from the submit machine, you also need a <code class="docutils literal notranslate"><span class="pre">--config-overrides</span></code> argument to
+<code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code> that sets the staging site for the main workflow to be
+the local site. To do this, add the following argument, replacing <code class="docutils literal notranslate"><span class="pre">${WORKFLOW_NAME}</span></code> with
+the string that is given as the argument to the option <code class="docutils literal notranslate"><span class="pre">--workflow-name</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;workflow-$</span><span class="si">{WORKFLOW_NAME}</span><span class="s2">-main:staging-site:osg=local&quot;</span>
 </pre></div>
 </div>
@@ -1205,61 +1197,74 @@ follwing lines to your <code class="docutils literal notranslate"><span class="p
 </div>
 <div class="section" id="running-the-workflow">
 <h3>Running the workflow<a class="headerlink" href="#running-the-workflow" title="Permalink to this headline">¶</a></h3>
-<p>Add the following additional arguments to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>:</p>
+<p>Once you have planned the workflow as above, you must also modify the submission of the
+workflow if it is to run successfully on the OSG.  Add the following additional
+arguments to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--no-create-proxy \
 --execution-sites osg \
 --append-pegasus-property &#39;pegasus.transfer.bypass.input.staging=true&#39; \
 --local-staging-server gsiftp://`hostname -f` \
+--remote-staging-server gsiftp://`hostname -f` \
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> will give the correct value if there is a gsiftp server running on the submit machine.  If not, change this as needed. The remote-staging-site is the intermediary computer than can pass files between the submitting computer and the computers doing the work.  <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> returns the full name of the computer. The full name of the computer that <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> has to be one that is accessible to both the submit machine and the workers. The <code class="docutils literal notranslate"><span class="pre">--no-create-proxy</span></code> may be omitted if you have LIGO.org credentials and will be
-retrieving data from authenticated locations in CVMFS.</p>
-<p>You will also need to specify where the code should get the data needed to generate reduced order model waveforms. To do this add the following additional arguments to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> will give the correct value if there is a gsiftp server running on the
+submit machine.  If not, change this as needed. The <code class="docutils literal notranslate"><span class="pre">remote-staging-server</span></code> is the
+intermediary computer than can pass files between the submitting computer and the computers
+doing the work.  <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> returns the full name of the computer. This full name has
+to be one that is accessible to both the submit machine and the workers. The <code class="docutils literal notranslate"><span class="pre">--no-create-proxy</span></code>
+may be omitted if you have LIGO.org credentials and will be retrieving data from authenticated
+locations in CVMFS.</p>
+<p>You will also need to specify where the code should get the data needed to generate reduced
+order model waveforms. To do this add the following additional arguments to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;local:env|LAL_DATA_PATH:/cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/lalsuite-extra/current/share/lalsimulation&#39;</span> \
 <span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:env|LAL_DATA_PATH:/cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/lalsuite-extra/current/share/lalsimulation&#39;</span> \
 </pre></div>
 </div>
-<p>Here, <code class="docutils literal notranslate"><span class="pre">current</span></code> is a symbolic link to the latest version of the data and can be replaced with a specific release (e.g.  <code class="docutils literal notranslate"><span class="pre">e02dab8c</span></code>) if required.</p>
-<p>If you are using the PyInstaller bundled executable, you will need to give <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code> the additional argument:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:env|NO_TMPDIR:1&#39;</span> \
+<p>Here, <code class="docutils literal notranslate"><span class="pre">current</span></code> is a symbolic link to the latest version of the data and can be replaced with a
+specific release (e.g. <code class="docutils literal notranslate"><span class="pre">e02dab8c</span></code>) if required.</p>
+<p>It is also through arguments to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code> that the workflow is made aware of which
+Singularity image to use when running <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code>. This is done by including the following
+argument to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s2">&quot;osg:condor|+SingularityImage:</span><span class="se">\&quot;</span><span class="s2">/cvmfs/singularity.opensciencegrid.org/pycbc/pycbc-el7:latest</span><span class="se">\&quot;</span><span class="s2">&quot;</span> \
 </pre></div>
 </div>
-<p>The set of arguments above will allow <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> to run on any OSG machine to which you have access, as well as
-the local compute cluster. If you do not want your jobs to run on the local cluster, but only on shared resources, then add
-the argument:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|Requirements:IS_GLIDEIN=?=True&#39;</span> \
+<p>The precise line above will cause <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> to run using the code in the latest version of PyCBC
+as found on the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch. You may well prefer a specific version (for example, for a production
+run) and each release will also have a corresponding Singularity image published to CVMFS.  For example,
+to use the <code class="docutils literal notranslate"><span class="pre">1.14.3</span></code> release of PyCBC, use instead the line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s2">&quot;osg:condor|+SingularityImage:</span><span class="se">\&quot;</span><span class="s2">/cvmfs/singularity.opensciencegrid.org/pycbc/pycbc-el7:v1.14.3</span><span class="se">\&quot;</span><span class="s2">&quot;</span> \
 </pre></div>
 </div>
-<p>to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>. If, in addition, you would like to run on an XSEDE resource on which you have an allocation, then
-add the argument:</p>
+<p>You may also direct the workflow to use a Singularity image of your own, if that has been published to CVMFS.</p>
+<p>When running on the OSG under Singularity, by default much of the environment of the host node where the
+job runs will be inherited inside the container.  In many cases this is desired, as some of the file-transfer
+tools that Pegasus requires can come from that environment. In other cases, however, that environment may
+interfere with what is in the container, and from release 1.14.3 onwards, the container itself includes
+any necessary file transfer tools. If you want to be sure that it is the tools installed inside the container
+that are used, then you must direct the workflow to have a clean environment inside the container, with nothing
+in it that you have not specified using lines of the form <code class="docutils literal notranslate"><span class="pre">--append-site-profile</span> <span class="pre">'osg:env|VARNAME:VALUE</span></code>
+(there will also be present in the environment a few other variables that are needed for proper running of
+Pegasus and HTCondor). To specify that you need your OSG jobs to run in a clean environment, also include
+the following lines when invoking <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s2">&quot;osg:condor|+InitializeModulesEnv:False&quot;</span> \
+<span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s2">&quot;osg:condor|+SingularityCleanEnv:True&quot;</span> \
+<span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s2">&quot;osg:condor|getenv:False&quot;</span> \
+</pre></div>
+</div>
+<p>In particular, it is recommended that LVK users run with the lines above.</p>
+<p>So far, we have described the arguments that  will allow <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> to run on any OSG machine to which
+you have access. If, in addition, you would like to run on an XSEDE resource on which you have an allocation,
+then add the argument:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_XSEDE_Sites:&quot;Comet&quot;&#39;</span> \
 </pre></div>
 </div>
-<p>where you replace the desired site (in this example the Comet cluster) with wherever you have an allocation. If you want to
-run <strong>only</strong> on that XSEDE cluster, then also add:</p>
+<p>where you replace the desired site (in this example the Comet cluster) with wherever you have an allocation. If
+you want to run <strong>only</strong> on that XSEDE cluster, then also add:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_SITES:&quot;Comet&quot;&#39;</span> \
 </pre></div>
 </div>
-<p>Summarizing, the following option will submit jobs to the local cluster, the Open Science Grid, and
-the specified XSEDE cluster:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_XSEDE_Sites:&quot;Comet&quot;&#39;</span> \
-</pre></div>
-</div>
-<p>To submit to the XSEDE cluster and the OSG, but not the local cluster, use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_XSEDE_Sites:&quot;Comet&quot;&#39;</span> \
-<span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|Requirements:IS_GLIDEIN=?=True&#39;</span> \
-</pre></div>
-</div>
-<p>and to submit only to the specified XSEDE cluster, use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_XSEDE_Sites:&quot;Comet&quot;&#39;</span> \
-<span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|Requirements:IS_GLIDEIN=?=True&#39;</span> \
-<span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_SITES:&quot;Comet&quot;&#39;</span> \
-</pre></div>
-</div>
-<p>Of course, you must still give all of the other arguments necessary to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>; both those other
-arguments needed to run on the Open Science Grid and specified in this section, and other standard arguments,
-such as specifying an LDG accounting group, if you will be running from an LDG cluster.</p>
-<p>Shared file system can not be used with OSG, so make sure that the <code class="docutils literal notranslate"><span class="pre">--enable-shared-filesystem</span></code> argument is not added to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>.</p>
+<p>Shared file systems cannot be used with the OSG, so make sure that the <code class="docutils literal notranslate"><span class="pre">--enable-shared-filesystem</span></code> argument is
+not provided to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code> when running on the OSG.</p>
 </div>
 </div>
 </div>
@@ -1286,7 +1291,7 @@ such as specifying an LDG accounting group, if you will be running from an LDG c
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Nov 08, 2019.
+        Last updated on Nov 10, 2019.
       </span>
 
     </p>
