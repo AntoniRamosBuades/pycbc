@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.stat &mdash; PyCBC c899f8 documentation</title>
+  <title>pycbc.events.stat &mdash; PyCBC 1.14.4 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                1.14.3
+                1.14.4
               </div>
             
           
@@ -1383,18 +1383,16 @@
         <span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
                                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto_psdvar_scaled_threshold</span>
-        <span class="c1"># Be careful! The input type here might be a str, so we need to make</span>
-        <span class="c1"># sure to cast to float.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_chirp_mass</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">max_chirp_mass</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mcm</span> <span class="o">=</span> <span class="n">max_chirp_mass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="TwoOGCBBHStatistic.single"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.TwoOGCBBHStatistic.single">[docs]</a>    <span class="k">def</span> <span class="nf">single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trigs</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">pycbc.conversions</span> <span class="k">import</span> <span class="n">mchirp_from_mass1_mass2</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">trigs</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span>
                                                    <span class="n">trigs</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span>
-        <span class="n">mcm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_chirp_mass</span>
-        <span class="k">if</span> <span class="n">mcm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">&gt;</span> <span class="n">mcm</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">=</span> <span class="n">mcm</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mcm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Careful - input might be a str, so cast to float</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mcm</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="o">.</span><span class="n">single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trigs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TwoOGCBBHStatistic.logsignalrate_multiifo"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.TwoOGCBBHStatistic.logsignalrate_multiifo">[docs]</a>    <span class="k">def</span> <span class="nf">logsignalrate_multiifo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">to_shift</span><span class="p">):</span>
