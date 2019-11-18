@@ -235,7 +235,7 @@
 <div class="viewcode-block" id="Stat"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.Stat">[docs]</a><span class="k">class</span> <span class="nc">Stat</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class which should be extended to provide a coincident statistic&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a statistic class instance</span>
 
 <span class="sd">        Parameters</span>
@@ -462,8 +462,8 @@
 <span class="sd">    amplitude ratios between triggers in different ifos.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">NewSNRStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">NewSNRStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">single_dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;snglstat&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
                              <span class="p">(</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
@@ -654,8 +654,8 @@
 <span class="sd">    amplitude ratios between triggers in different ifos.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">NewSNRStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">NewSNRStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">single_dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;snglstat&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
                              <span class="p">(</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
@@ -860,8 +860,8 @@
 
 <span class="sd">    single-detector ranking</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">PhaseTDStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">PhaseTDStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto</span></div>
 
 
@@ -872,10 +872,10 @@
 <span class="sd">    template over single-ifo newsnr values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t find any statistic files !&quot;</span><span class="p">)</span>
-        <span class="n">NewSNRStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="n">NewSNRStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="c1"># the stat file attributes are hard-coded as &#39;%{ifo}-fit_coeffs&#39;</span>
         <span class="n">parsed_attrs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
@@ -968,8 +968,8 @@
 <span class="sd">    approximates combined (new)snr for coincs with similar newsnr in each ifo</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">ExpFitStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">ExpFitStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># for low-mass templates the exponential slope alpha \approx 6</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpharef</span> <span class="o">=</span> <span class="mf">6.</span>
 
@@ -1003,8 +1003,8 @@
 <span class="sd">    detector ranking</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">ExpFitCombinedSNR</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">ExpFitCombinedSNR</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto</span></div>
 
 
@@ -1014,8 +1014,8 @@
 <span class="sd">    the single detector ranking</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">ExpFitCombinedSNR</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">ExpFitCombinedSNR</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto_psdvar</span></div>
 
 
@@ -1023,11 +1023,11 @@
     <span class="sd">&quot;&quot;&quot;Statistic combining exponential noise model with signal histogram PDF&quot;&quot;&quot;</span>
 
     <span class="c1"># default is 2-ifo operation with exactly 1 &#39;phasetd&#39; file</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># read in both foreground PDF and background fit info</span>
-        <span class="n">ExpFitCombinedSNR</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="n">ExpFitCombinedSNR</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># need the self.single_dtype value from PhaseTDStatistic</span>
-        <span class="n">PhaseTDStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="n">PhaseTDStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <div class="viewcode-block" id="PhaseTDExpFitStatistic.single"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.PhaseTDExpFitStatistic.single">[docs]</a>    <span class="k">def</span> <span class="nf">single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trigs</span><span class="p">):</span>
         <span class="c1"># same single-ifo stat as ExpFitCombinedSNR</span>
@@ -1055,11 +1055,11 @@
     <span class="sd">&quot;&quot;&quot;Statistic combining exponential noise model with signal histogram PDF&quot;&quot;&quot;</span>
 
     <span class="c1"># default is 2-ifo operation with exactly 1 &#39;phasetd&#39; file</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># read in both foreground PDF and background fit info</span>
-        <span class="n">ExpFitCombinedSNR</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="n">ExpFitCombinedSNR</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># need the self.single_dtype value from PhaseTDStatistic</span>
-        <span class="n">PhaseTDNewStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="n">PhaseTDNewStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <div class="viewcode-block" id="PhaseTDNewExpFitStatistic.single"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.PhaseTDNewExpFitStatistic.single">[docs]</a>    <span class="k">def</span> <span class="nf">single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trigs</span><span class="p">):</span>
         <span class="c1"># same single-ifo stat as ExpFitCombinedSNR</span>
@@ -1089,8 +1089,8 @@
 <span class="sd">    adding the sine-Gaussian veto to the single detector ranking</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">PhaseTDExpFitStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">PhaseTDExpFitStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto</span></div>
 
 
@@ -1100,8 +1100,9 @@
 <span class="sd">    adding the sine-Gaussian veto to the single detector ranking</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">PhaseTDNewExpFitStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">PhaseTDNewExpFitStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                           <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto</span></div>
 
 
@@ -1112,8 +1113,9 @@
 <span class="sd">    single detector ranking</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">PhaseTDExpFitSGStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">PhaseTDExpFitSGStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto_psdvar</span></div>
 
 
@@ -1124,8 +1126,9 @@
 <span class="sd">    single detector ranking</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">PhaseTDExpFitSGStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">PhaseTDExpFitSGStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto_psdvar_scaled</span></div>
 
 
@@ -1161,10 +1164,12 @@
 <span class="sd">    template over single-ifo newsnr values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">benchmark_lograte</span><span class="o">=-</span><span class="mf">14.6</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">benchmark_lograte</span><span class="o">=-</span><span class="mf">14.6</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># benchmark_lograte is log of a representative noise trigger rate</span>
         <span class="c1"># This comes from H1L1 (O2) and is 4.5e-7 Hz</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ExpFitSGBgRateStatistic</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ExpFitSGBgRateStatistic</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                                      <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">benchmark_lograte</span> <span class="o">=</span> <span class="n">benchmark_lograte</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto</span>
 
@@ -1195,13 +1200,14 @@
 
 <div class="viewcode-block" id="ExpFitSGFgBgRateStatistic"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.ExpFitSGFgBgRateStatistic">[docs]</a><span class="k">class</span> <span class="nc">ExpFitSGFgBgRateStatistic</span><span class="p">(</span><span class="n">PhaseTDStatistic</span><span class="p">,</span> <span class="n">ExpFitSGBgRateStatistic</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># read in background fit info and store it</span>
-        <span class="n">ExpFitSGBgRateStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="n">ExpFitSGBgRateStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># if ifos not already set, determine via background fit info</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">bg_ifos</span>
         <span class="c1"># PhaseTD statistic single_dtype plus network sensitivity benchmark</span>
-        <span class="n">PhaseTDStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="n">PhaseTDStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">single_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;benchmark_logvol&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto</span>
@@ -1283,13 +1289,15 @@
 <div class="viewcode-block" id="ExpFitSGFgBgRateNewStatistic"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.ExpFitSGFgBgRateNewStatistic">[docs]</a><span class="k">class</span> <span class="nc">ExpFitSGFgBgRateNewStatistic</span><span class="p">(</span><span class="n">PhaseTDNewStatistic</span><span class="p">,</span>
                                    <span class="n">ExpFitSGBgRateStatistic</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># read in background fit info and store it</span>
-        <span class="n">ExpFitSGBgRateStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="n">ExpFitSGBgRateStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># if ifos not already set, determine via background fit info</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">bg_ifos</span>
         <span class="c1"># PhaseTD statistic single_dtype plus network sensitivity benchmark</span>
-        <span class="n">PhaseTDNewStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">)</span>
+        <span class="n">PhaseTDNewStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
+                                     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">single_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;benchmark_logvol&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto</span>
@@ -1360,21 +1368,29 @@
 
 
 <div class="viewcode-block" id="TwoOGCStatistic"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.TwoOGCStatistic">[docs]</a><span class="k">class</span> <span class="nc">TwoOGCStatistic</span><span class="p">(</span><span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                              <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto_psdvar_scaled</span></div>
 
 
 <div class="viewcode-block" id="TwoOGCBBHStatistic"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.TwoOGCBBHStatistic">[docs]</a><span class="k">class</span> <span class="nc">TwoOGCBBHStatistic</span><span class="p">(</span><span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_chirp_mass</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                              <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_newsnr</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">get_newsnr_sgveto_psdvar_scaled_threshold</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mchirp</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># Be careful! The input type here might be a str, so we need to make</span>
+        <span class="c1"># sure to cast to float.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_chirp_mass</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">max_chirp_mass</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="TwoOGCBBHStatistic.single"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.TwoOGCBBHStatistic.single">[docs]</a>    <span class="k">def</span> <span class="nf">single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trigs</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">pycbc.conversions</span> <span class="k">import</span> <span class="n">mchirp_from_mass1_mass2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mchirp</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">trigs</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span>
-                                              <span class="n">trigs</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">trigs</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span>
+                                                   <span class="n">trigs</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span>
+        <span class="n">mcm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_chirp_mass</span>
+        <span class="k">if</span> <span class="n">mcm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">&gt;</span> <span class="n">mcm</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">=</span> <span class="n">mcm</span>
         <span class="k">return</span> <span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="o">.</span><span class="n">single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trigs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TwoOGCBBHStatistic.logsignalrate_multiifo"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.TwoOGCBBHStatistic.logsignalrate_multiifo">[docs]</a>    <span class="k">def</span> <span class="nf">logsignalrate_multiifo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">to_shift</span><span class="p">):</span>
@@ -1382,7 +1398,7 @@
         <span class="c1"># proportional to mchirp^(-11/3) due to density of templates</span>
         <span class="n">logr_s</span> <span class="o">=</span> <span class="n">ExpFitSGFgBgRateNewStatistic</span><span class="o">.</span><span class="n">logsignalrate_multiifo</span><span class="p">(</span>
                                                   <span class="bp">self</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">to_shift</span><span class="p">)</span>
-        <span class="n">logr_s</span> <span class="o">+=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp</span> <span class="o">/</span> <span class="mf">20.0</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">11.</span><span class="o">/</span><span class="mf">3.0</span><span class="p">))</span>
+        <span class="n">logr_s</span> <span class="o">+=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">curr_mchirp</span> <span class="o">/</span> <span class="mf">20.0</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">11.</span><span class="o">/</span><span class="mf">3.0</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">logr_s</span></div></div>
 
 
@@ -1491,7 +1507,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Nov 16, 2019.
+        Last updated on Nov 18, 2019.
       </span>
 
     </p>
